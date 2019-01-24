@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>coffee-machine</title>
+	<link rel="stylesheet" type="text/css" href="http://malahov-web.ru/demo/cdn/grids/grid_24_r5.css">	
+    <link rel="stylesheet" type="text/css" href="http://malahov-web.ru/demo/cdn/javascript_style.css">  
+	<link rel="stylesheet" type="text/css" href="style.css">	
+	<meta charset="utf-8">
+</head>
+
+
+<body>
+
+
+<header>
+	coffee-machine
+</header>
+
+
+<div class="application" id="app">
+
+	<div class="container">
+		<div class="row">
+
+
+
+			<div class="ds_24">
+
+                <button id="my_account">Заварить кофе</button>
+
+
+
+
+<script>
+
+/*
+0. Внутренний и внешний интерфейс
+1. подраздел
+2. подраздел
+3. подраздел
+4. подраздел
+S. Итого
+
+
+*/
+
+'use strict';
+
+
+
+
+// 0.
+/*
+ООП - подход, при котором все данные представляются в виде объектов классов, и свойства и методы  определяются
+в рамках класса и применяются к объекту.
+
+*/
+
+
+// v 0
+/*
+function CoffeeMachine(power) {
+
+    this.waterAmount = 0; // количество воды в кофеварке
+    this.cofeeAmount = 0; // количество кофе в кофеварке
+
+// var waterAmount = this.waterAmount;
+// var cofeeAmount = this.cofeeAmount;
+    var coeff = 0.25;
+
+    function checkIngridients() {
+// console.log(waterAmount, cofeeAmount);
+        // if ( this.cofeeAmount / this.waterAmount  < coeff ) {
+        if ( this.cofeeAmount / this.waterAmount  < coeff ) {
+
+            return alert('Вы положили недостаточно кофе!');
+        }
+    }
+
+
+    this.start = function () {
+        
+        // checkIngridients(); // TypeError: this is undefined
+        // checkIngridients.call(this); // Неудобно к каждому вызову привязывать this
+        checkIngridients();
+        alert( 'Создана кофеварка мощностью: ' + power + ' ватт' );
+    }
+
+    // checkIngridients();
+
+
+    
+}
+
+// создать кофеварку
+var coffeeMachine = new CoffeeMachine(100);
+
+// залить воды
+coffeeMachine.waterAmount = 200;
+coffeeMachine.cofeeAmount = 40;
+
+coffeeMachine.start();
+
+
+// alert(coffeeMachine.coeff);
+
+*/
+
+
+// v 1
+
+/*
+function CoffeeMachine(power) {
+
+    this.waterAmount = 0; // количество воды в кофеварке
+    this.cofeeAmount = 0; // количество кофе в кофеварке
+
+    var coeff = 0.25;
+
+    var checkIngridients = function () {
+
+        if ( this.cofeeAmount / this.waterAmount  < coeff ) {
+
+            return alert('Вы положили недостаточно кофе!');
+        }
+    }.bind(this);   // Некрасиво объявлять так ф-ю)
+
+
+    this.start = function () {
+        
+        checkIngridients();
+        alert( 'Создана кофеварка мощностью: ' + power + ' ватт' );
+    }
+
+
+}
+
+// создать кофеварку
+var coffeeMachine = new CoffeeMachine(100);
+
+// залить воды
+coffeeMachine.waterAmount = 200;
+coffeeMachine.cofeeAmount = 40;
+
+coffeeMachine.start();
+
+*/
+
+
+// v 2 
+
+function CoffeeMachine(power) {
+
+    var self = this; 
+
+    this.waterAmount = 0; // количество воды в кофеварке
+    this.cofeeAmount = 0; // количество кофе в кофеварке
+
+    var coeff = 0.25;
+
+    var checkIngridients = function () {
+
+        if ( self.cofeeAmount / self.waterAmount  < coeff ) {
+
+            return alert('Вы положили недостаточно кофе!');
+        }
+    }
+
+
+    this.start = function () {
+        
+        checkIngridients();
+        alert( 'Создана кофеварка мощностью: ' + power + ' ватт' );
+    }
+
+    
+}
+
+// создать кофеварку
+var coffeeMachine = new CoffeeMachine(100);
+
+// залить воды
+coffeeMachine.waterAmount = 200;
+coffeeMachine.cofeeAmount = 40;
+
+coffeeMachine.start();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+var button = document.querySelector('#my_account');
+button.addEventListener('click', showAccount );
+
+function showAccount() {
+    
+
+    console.log(kirill);
+
+}
+
+
+
+function User(name) {
+    
+    this.name = name,
+    this.surname,
+
+    this.sayHi = function() {
+        alert( "Привет, я " + name );
+    };
+
+    this.getSurname = function() {
+        this.surname = prompt("Введите Вашу фамилию ", "");
+    }
+
+}
+
+var vasya = new User("Вася"); // создали пользователя
+vasya.sayHi(); // пользователь умеет говорить "Привет"
+
+var kirill = new User("Кирилл");
+kirill.sayHi();
+kirill.getSurname();
+
+*/
+
+
+// 1. 
+
+/*
+
+*/
+
+
+
+
+// 2. 
+/*
+
+*/
+
+    
+
+</script>
+
+			</div>
+
+
+
+		</div>
+	</div>
+	
+</div>
+
+
+
+<!-- <script src="js/2.5.1.js"></script> -->
+
+
+</body>
+</html>
