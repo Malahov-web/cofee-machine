@@ -12,3 +12,30 @@
 
     margin-top: 2em;
 }
+
+
+.coffee-machine.animating img{
+
+
+    animation: shaking 0.25s infinite ease;
+   
+}
+
+@keyframes shaking {
+    0%{
+        transform: rotate(0deg);
+    } 
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }    
+
+} 

@@ -1,0 +1,19 @@
+
+1.
+Simple logic -
+start
+
+    getComponents
+
+    checkComponents
+
+    cookingCoffee
+
+Все работает внутри класса
+
+
+2.
+Simple + StartUI + Animation
+
+Добавлена анимация для процесса приготовления,
+Вызов через UI.

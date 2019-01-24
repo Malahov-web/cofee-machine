@@ -92,9 +92,11 @@ coffeeMachine.start();
 
 // v 2 
 
-function CoffeeMachine(power) {     // class ?
+function CoffeeMachine(elementMachine) {     // class ?
 
     var self = this; 
+
+    this.coffeeMachineUI = elementMachine;
 
     this.cofeeAmount = 0; // количество кофе в кофеварке    
     this.waterAmount = 0; // количество воды в кофеварке
@@ -173,41 +175,33 @@ function CoffeeMachine(power) {     // class ?
 
     var durationCooking = function(heatCapacity, mass, tempDifference, power ) {
 
-        // return WATER_HEAT_CAPACITY * self.waterAmount/1000 * WATER_TEMPERATURE_DIFF / power;
-        // return this.waterAmount * WATER_HEAT_CAPACITY * 80 / power;
         return heatCapacity *  mass * tempDifference / power;
     }
 
     var cookingCoffee = function() {
 
-        duration = durationCooking(WATER_HEAT_CAPACITY, self.waterAmount/1000, WATER_TEMPERATURE_DIFF, power);      
-        alert('Будет готово через: ' + duration + ' секунд)'); 
+        duration = durationCooking(WATER_HEAT_CAPACITY, self.waterAmount, WATER_TEMPERATURE_DIFF, power);      
+        alert('Будет готово через: ' + duration / MILLISECOND_COEFF + ' секунд)'); 
+
+        animationStart();
     }
 
     var coffeeReady = function() {
 
+        animationEnd();
         alert('Кофе готов!');
     }
 
 
-
-
-
-
-
-/*    var checkIngridients = function () {
-
-        if ( self.cofeeAmount / self.waterAmount  < COEFF ) {
-
-            alert('Вы положили недостаточно кофе!');
-            return false;
-        }
-        return true;
-    }*/
+    var animationStart = function() {
+        self.coffeeMachineUI.classList.add('animating');        
+    }
+    var animationEnd = function() {
+        self.coffeeMachineUI.classList.remove('animating');        
+    }    
 
 
     this.start = function () {
-
 
 
         getComponents();
@@ -215,34 +209,34 @@ function CoffeeMachine(power) {     // class ?
         // checkIngridients();
 
         cookingCoffee();
-console.log(duration);
-        setTimeout(coffeeReady, duration * MILLISECOND_COEFF);
+// console.log(duration);
+        setTimeout(coffeeReady, duration);
 
-        
-        // var isIngridientsNormal = checkIngridients();
-
-        // if (isIngridientsNormal) 
-        //     alert( 'Создана кофеварка мощностью: ' + power + ' ватт' );
     }
 
     
 }
 
 
+var coffeeMachineUI = document.querySelector('.coffee-machine');
+var buttonStartUI   = document.querySelector('#start_coffee');
 
 // создать кофеварку
-var coffeeMachine = new CoffeeMachine(100);
-
-// залить воды
-coffeeMachine.waterAmount = 200;
-coffeeMachine.cofeeAmount = 40;
-
-coffeeMachine.start();
+var coffeeMachine = new CoffeeMachine(coffeeMachineUI);
+// coffeeMachine.start();
 
 
+buttonStartUI.addEventListener('click', 
+
+        coffeeMachine.start    
+);
 
 
-/*start
+
+/* 
+Simple
+
+start
 
     getComponents
 
@@ -251,6 +245,18 @@ coffeeMachine.start();
     cookingCoffee
 */
 
+
+/* 
+Simple + StartUI + Animation
+
+start
+
+    getComponents
+
+    checkComponents
+
+    cookingCoffee
+*/
 
 
 
