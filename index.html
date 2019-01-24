@@ -27,7 +27,16 @@
 
 			<div class="ds_24">
 
-                <button id="my_account">Заварить кофе</button>
+
+                <div class="mv_24 ds_8 ds_offset_8">
+                    <div class="coffee-machine">
+                        <img src="images/coffee-machine.jpg" alt="">
+                        <button id="my_account">Заварить кофе</button>
+                    </div>
+                     
+                </div>
+
+               
 
 
 
@@ -46,146 +55,6 @@ S. Итого
 */
 
 'use strict';
-
-
-
-
-// 0.
-/*
-ООП - подход, при котором все данные представляются в виде объектов классов, и свойства и методы  определяются
-в рамках класса и применяются к объекту.
-
-*/
-
-
-// v 0
-/*
-function CoffeeMachine(power) {
-
-    this.waterAmount = 0; // количество воды в кофеварке
-    this.cofeeAmount = 0; // количество кофе в кофеварке
-
-// var waterAmount = this.waterAmount;
-// var cofeeAmount = this.cofeeAmount;
-    var coeff = 0.25;
-
-    function checkIngridients() {
-// console.log(waterAmount, cofeeAmount);
-        // if ( this.cofeeAmount / this.waterAmount  < coeff ) {
-        if ( this.cofeeAmount / this.waterAmount  < coeff ) {
-
-            return alert('Вы положили недостаточно кофе!');
-        }
-    }
-
-
-    this.start = function () {
-        
-        // checkIngridients(); // TypeError: this is undefined
-        // checkIngridients.call(this); // Неудобно к каждому вызову привязывать this
-        checkIngridients();
-        alert( 'Создана кофеварка мощностью: ' + power + ' ватт' );
-    }
-
-    // checkIngridients();
-
-
-    
-}
-
-// создать кофеварку
-var coffeeMachine = new CoffeeMachine(100);
-
-// залить воды
-coffeeMachine.waterAmount = 200;
-coffeeMachine.cofeeAmount = 40;
-
-coffeeMachine.start();
-
-
-// alert(coffeeMachine.coeff);
-
-*/
-
-
-// v 1
-
-/*
-function CoffeeMachine(power) {
-
-    this.waterAmount = 0; // количество воды в кофеварке
-    this.cofeeAmount = 0; // количество кофе в кофеварке
-
-    var coeff = 0.25;
-
-    var checkIngridients = function () {
-
-        if ( this.cofeeAmount / this.waterAmount  < coeff ) {
-
-            return alert('Вы положили недостаточно кофе!');
-        }
-    }.bind(this);   // Некрасиво объявлять так ф-ю)
-
-
-    this.start = function () {
-        
-        checkIngridients();
-        alert( 'Создана кофеварка мощностью: ' + power + ' ватт' );
-    }
-
-
-}
-
-// создать кофеварку
-var coffeeMachine = new CoffeeMachine(100);
-
-// залить воды
-coffeeMachine.waterAmount = 200;
-coffeeMachine.cofeeAmount = 40;
-
-coffeeMachine.start();
-
-*/
-
-
-// v 2 
-
-function CoffeeMachine(power) {
-
-    var self = this; 
-
-    this.waterAmount = 0; // количество воды в кофеварке
-    this.cofeeAmount = 0; // количество кофе в кофеварке
-
-    var coeff = 0.25;
-
-    var checkIngridients = function () {
-
-        if ( self.cofeeAmount / self.waterAmount  < coeff ) {
-
-            return alert('Вы положили недостаточно кофе!');
-        }
-    }
-
-
-    this.start = function () {
-        
-        checkIngridients();
-        alert( 'Создана кофеварка мощностью: ' + power + ' ватт' );
-    }
-
-    
-}
-
-// создать кофеварку
-var coffeeMachine = new CoffeeMachine(100);
-
-// залить воды
-coffeeMachine.waterAmount = 200;
-coffeeMachine.cofeeAmount = 40;
-
-coffeeMachine.start();
-
 
 
 
@@ -246,11 +115,6 @@ kirill.getSurname();
 
 
 
-// 2. 
-/*
-
-*/
-
     
 
 </script>
@@ -267,6 +131,7 @@ kirill.getSurname();
 
 
 <!-- <script src="js/2.5.1.js"></script> -->
+<script src="script.js"></script>
 
 
 </body>
