@@ -17,3 +17,7 @@ Simple + StartUI + Animation
 
 Добавлена анимация для процесса приготовления,
 Вызов через UI.
+
+
+3.
+Simple + StartUI + Animation class

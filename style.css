@@ -20,6 +20,18 @@
     animation: shaking 0.25s infinite ease;
    
 }
+.coffee-machine.animating-shaking img{
+
+
+    animation: shaking 0.25s infinite ease;
+   
+}
+.coffee-machine.animating-zooming img{
+
+
+    animation: zooming 0.25s infinite ease;
+   
+}
 
 @keyframes shaking {
     0%{
@@ -36,6 +48,24 @@
     }
     100% {
         transform: rotate(0deg);
+    }    
+
+} 
+@keyframes zooming {
+    0%{
+        transform: scale(1);
+    } 
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
     }    
 
 } 

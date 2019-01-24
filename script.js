@@ -1,102 +1,45 @@
 'use strict';
 
-// v 0
-/*
-function CoffeeMachine(power) {
-
-    this.waterAmount = 0; // количество воды в кофеварке
-    this.cofeeAmount = 0; // количество кофе в кофеварке
-
-// var waterAmount = this.waterAmount;
-// var cofeeAmount = this.cofeeAmount;
-    var coeff = 0.25;
-
-    function checkIngridients() {
-// console.log(waterAmount, cofeeAmount);
-        // if ( this.cofeeAmount / this.waterAmount  < coeff ) {
-        if ( this.cofeeAmount / this.waterAmount  < coeff ) {
-
-            return alert('Вы положили недостаточно кофе!');
-        }
-    }
-
-
-    this.start = function () {
-        
-        // checkIngridients(); // TypeError: this is undefined
-        // checkIngridients.call(this); // Неудобно к каждому вызову привязывать this
-        checkIngridients();
-        alert( 'Создана кофеварка мощностью: ' + power + ' ватт' );
-    }
-
-    // checkIngridients();
-
-
-    
-}
-
-// создать кофеварку
-var coffeeMachine = new CoffeeMachine(100);
-
-// залить воды
-coffeeMachine.waterAmount = 200;
-coffeeMachine.cofeeAmount = 40;
-
-coffeeMachine.start();
-
-
-// alert(coffeeMachine.coeff);
-
-*/
-
-
-// v 1
-
-/*
-function CoffeeMachine(power) {
-
-    this.waterAmount = 0; // количество воды в кофеварке
-    this.cofeeAmount = 0; // количество кофе в кофеварке
-
-    var coeff = 0.25;
-
-    var checkIngridients = function () {
-
-        if ( this.cofeeAmount / this.waterAmount  < coeff ) {
-
-            return alert('Вы положили недостаточно кофе!');
-        }
-    }.bind(this);   // Некрасиво объявлять так ф-ю)
-
-
-    this.start = function () {
-        
-        checkIngridients();
-        alert( 'Создана кофеварка мощностью: ' + power + ' ватт' );
-    }
-
-
-}
-
-// создать кофеварку
-var coffeeMachine = new CoffeeMachine(100);
-
-// залить воды
-coffeeMachine.waterAmount = 200;
-coffeeMachine.cofeeAmount = 40;
-
-coffeeMachine.start();
-
-*/
-
 
 // v 2 
+
+
+function Animation(targetEl, animationType) {
+
+/*    var self = this;
+
+    self.animationClassName = 'animating';
+    var types = {
+
+        shaking: 'shaking',
+        zooming: 'zooming'
+    }
+    for (var key in types) {
+        if ( animationType == types[key] ){
+            self.animationClassName +=  " " + animationType;
+        }       
+    }
+console.log('animationClassName: ' + self.animationClassName);*/
+
+    this.animationStart = function() {
+        // self.targetEl.classList.add('animating');        
+        targetEl.classList.add('animating' + '-'+ animationType);        
+        // targetEl.classList.add(self.animationClassName);        
+    }
+    this.animationEnd = function() {
+
+        targetEl.classList.remove('animating' + '-'+ animationType);        
+        // targetEl.classList.remove(self.animationClassName);        
+    }  
+}
+
 
 function CoffeeMachine(elementMachine) {     // class ?
 
     var self = this; 
 
     this.coffeeMachineUI = elementMachine;
+    var animatedObj = new Animation(self.coffeeMachineUI, 'shaking');
 
     this.cofeeAmount = 0; // количество кофе в кофеварке    
     this.waterAmount = 0; // количество воды в кофеварке
@@ -115,7 +58,6 @@ function CoffeeMachine(elementMachine) {     // class ?
     // duration = c*m*ΔT / power 
 
     var MILLISECOND_COEFF = 1000;
-
 
 
 
@@ -183,22 +125,24 @@ function CoffeeMachine(elementMachine) {     // class ?
         duration = durationCooking(WATER_HEAT_CAPACITY, self.waterAmount, WATER_TEMPERATURE_DIFF, power);      
         alert('Будет готово через: ' + duration / MILLISECOND_COEFF + ' секунд)'); 
 
-        animationStart();
+        // animationStart();
+        animatedObj.animationStart();
     }
 
     var coffeeReady = function() {
 
-        animationEnd();
-        alert('Кофе готов!');
+        // animationEnd();
+        animatedObj.animationEnd();        
+        alert('Кофе готов!');        
     }
 
 
-    var animationStart = function() {
-        self.coffeeMachineUI.classList.add('animating');        
-    }
-    var animationEnd = function() {
-        self.coffeeMachineUI.classList.remove('animating');        
-    }    
+    // var animationStart = function() {
+    //     self.coffeeMachineUI.classList.add('animating');        
+    // }
+    // var animationEnd = function() {
+    //     self.coffeeMachineUI.classList.remove('animating');        
+    // }    
 
 
     this.start = function () {
